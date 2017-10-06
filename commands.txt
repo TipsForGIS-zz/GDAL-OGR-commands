@@ -1,0 +1,9 @@
+1. To create a geojson from a table in a database:
+ogr2ogr -f "GeoJSON" output.geojson PG:"dbname=XXXXX user=XXXXX host=XXXXX password=XXXXX" -sql "SELECT * from input_table_name"
+
+2. To create a table in a database from a geojson file:
+ogr2ogr -f "PostgreSQL" PG:"dbname=XXXXX user=XXXXX
+host=XXXXX password=XXXXX" "input.geojson" -nln output_table_name
+
+3. To create a geojson file containing a filtered SQL result of another geojson file:
+ogr2ogr -f "GeoJSON" filtered.geojson input.geojson -sql "SELECT * FROM input WHERE val>=5"
