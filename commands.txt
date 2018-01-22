@@ -1,9 +1,15 @@
-1. To create a geojson from a table in a database:
-ogr2ogr -f "GeoJSON" output_name.geojson -nln output_name.geojson PG:"dbname=XXXXX user=XXXXX host=XXXXX password=XXXXX port=XXXX" -sql "SELECT * from input_table_name"
+0. List supported or installed format drivers:
+ogrinfo --formats
 
-2. To create a table in a database from a geojson file:
+1. Create a geojson from a table in a database:
+ogr2ogr -f "GeoJSON" ./output_name.geojson -nln output_name.geojson PG:"dbname=XXXXX user=XXXXX host=XXXXX password=XXXXX port=XXXX" -sql "SELECT * from input_table_name"
+
+2. Create a table in a database from a geojson file:
 ogr2ogr -f "PostgreSQL" PG:"dbname=XXXXX user=XXXXX
-host=XXXXX password=XXXXX" "input.geojson" -nln output_table_name
+host=XXXXX password=XXXXX" "./input.geojson" -nln output_table_name
 
-3. To create a geojson file containing a filtered SQL result of another geojson file:
-ogr2ogr -f "GeoJSON" filtered.geojson input.geojson -sql "SELECT * FROM input WHERE val>=5"
+3. Create a geojson file containing a filtered SQL result of another geojson file:
+ogr2ogr -f "GeoJSON" ./filtered.geojson ./input.geojson -sql "SELECT * FROM input WHERE val>=5"
+
+4. Create geojson from shapefile
+ogr2ogr -f "GeoJSON" ./output_name.geojson -nln output_name.geojson ./input.shp
