@@ -5,7 +5,7 @@ ogrinfo --formats
 ogr2ogr -f "GeoJSON" ./output_name.geojson -nln output_name.geojson PG:"dbname=XXXXX user=XXXXX 
 host=XXXXX password=XXXXX port=XXXX" -sql "SELECT * from input_table_name"
 
-2. Create a geojson from a table in a database:
+2. Create a shapefile from a table in a database:
 ogr2ogr -f "ESRI Shapefile" ./output_name.shp PG:"dbname=XXXXX user=XXXXX 
 host=XXXXX password=XXXXX port=XXXX" -sql "SELECT * from input_table_name"
 
